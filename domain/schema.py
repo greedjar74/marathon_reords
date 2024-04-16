@@ -9,7 +9,7 @@ from pydantic import BaseModel
 class record(BaseModel):
     id: int
     marathon: str
-    date: datetime.date
+    date: str
     bib_num: int
     record: str
     dnf: bool

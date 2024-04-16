@@ -10,7 +10,7 @@ class Records(Base):
 
     id = Column(Integer, primary_key=True) # 각 데이터에 id를 부여 -> 중복 불가
     marathon = Column(String, nullable=False) # 마라톤 대회 이름 -> nullable=False : 값이 비어있을 수 없다.
-    date = Column(Date, nullable=False) # 대회 일시
-    bib_num = Column(Integer, nullable=False) # 배번호
+    date = Column(String, nullable=False) # 대회 일시
+    bibnum = Column(Integer, nullable=False) # 배번호
     record = Column(String, nullable=True) # 기록 -> 완주를 못 한 경우 기록이 없다.
     dnf = Column(Boolean, nullable=False) # 포기여부

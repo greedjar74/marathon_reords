@@ -18,31 +18,30 @@ def update_record(db:Session, new_record):
     tmp = new_record.split('_') # 각 객체를 분리한다.
 
     marathon = tmp[0] # 
-    date = datetime.strptime(tmp[1], '%Y-%m-%d').date() # 문자열 형태에서 date타입으로 변환
-    bib_num = int(tmp[2])
+    date = tmp[1] # 문자열 형태에서 date타입으로 변환
+    bibnum = int(tmp[2])
     record = tmp[3]
     dnf = bool(tmp[4])
 
-    record = Records(marathon=marathon, date=date, bib_num=bib_num, record=record, dnf=dnf)
+    record = Records(marathon=marathon, date=date, bibnum=bibnum, record=record, dnf=dnf)
     db.add(record)
     db.commit()
 
 
 # db에 있는 데이터 수정
-# new_record 형태 : 'id/col/변환값'
+# new_record 형태 : 'id_col_변환값'
 def modify_record(db:Session, new_record):
-    tmp = new_record.split('/')
+    tmp = new_record.split('_')
     print(tmp)
     id = tmp[0]
     col = tmp[1]
     data = tmp[2]
 
     q = db.query(Records).get(id)
-
+    # 각 col에 맞게 데이터를 정제하여 입력
     if col == 'date':
-        data = datetime.strptime(data, '%Y-%m-%d').date()
         q.date = data
-    elif col == 'bib_num':
+    elif col == 'bibnum':
         data = int(data)
         q.bib_num = data
     elif col == 'dnf':
@@ -53,4 +52,11 @@ def modify_record(db:Session, new_record):
     else :
         q.record = data
 
+    db.commit()
+
+# db의 특정 row삭제
+def delete_record(db:Session, id):
+    id = int(id)
+    q = db.query(Records).get(id)
+    db.delete(q)
     db.commit()
