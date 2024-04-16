@@ -13,9 +13,9 @@
     get_record_list()
 </script>
 
-<h1>새로운 기록이 있다면 입력해주세요</h1>
+<h1><a use:link href="/update_record">새로운 기록이 있다면 입력해주세요</a></h1>
 <h3>
     {#each record_list as record}
-        <li><a use:link href="/record_detail/{record.id}">{record.marathon}</a></li>
+        <li><a use:link href="/record_detail/{record.id}">{record.marathon}</a></li><br>
     {/each}
 </h3>

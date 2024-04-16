@@ -3,6 +3,7 @@
 
 from datetime import datetime
 
+from starlette import status
 from fastapi import FastAPI, APIRouter, Depends # Depends를 통해 의존성 부여
 from sqlalchemy.orm import Session
 
