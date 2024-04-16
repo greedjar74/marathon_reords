@@ -3,14 +3,8 @@
 
 import datetime
 
-from fastapi import APIRouter, Depends # Depends를 통해 db 의존성 부여
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-
-from models import Records
-from database import get_db
-
-from domain import schema, crud
 
 class record(BaseModel):
     id: int
