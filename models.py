@@ -13,4 +13,4 @@ class Records(Base):
     date = Column(String, nullable=False) # 대회 일시
     bibnum = Column(Integer, nullable=False) # 배번호
     record = Column(String, nullable=True) # 기록 -> 완주를 못 한 경우 기록이 없다.
-    dnf = Column(Boolean, nullable=False) # 포기여부
+    dnf = Column(String, nullable=False) # 포기여부

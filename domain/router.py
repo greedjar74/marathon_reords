@@ -10,16 +10,16 @@ from models import Records
 from database import get_db
 from domain import schema, crud
 
-router = APIRouter(prefix='')
+router = APIRouter(prefix='/records')
 
 # 메인 화면
-@router.get('/records', response_model=list[schema.record])
+@router.get('', response_model=list[schema.record])
 def records(db: Session=Depends(get_db)):
     _records = crud.get_records(db) # crud의 함수를 통해 기록 리스트를 가져온다.
     return _records
 
 # 특정 기록 가져오기
-@router.get('/record_detail/{record_id}', response_model=schema.record)
+@router.get('/record_detail/{id}', response_model=schema.record)
 def get_record_detail(id, db: Session=Depends(get_db)):
     _record_detail = crud.get_record_detail(db, id=id)
     return _record_detail
@@ -41,6 +41,6 @@ def modify_record(new_record, db: Session=Depends(get_db)):
 # 특정 기록 삭제
 # id를 통해 특정 데이터를 지정하고 삭제한다.
 # 입력 데이터 형태 : 'id'
-@router.post('delete_record')
+@router.post('/delete_record')
 def delete_record(id, db: Session=Depends(get_db)):
     crud.delete_record(db=db, id=id)

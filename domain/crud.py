@@ -26,7 +26,7 @@ def update_record(db:Session, new_record):
     date = tmp[1] # 문자열 형태에서 date타입으로 변환
     bibnum = int(tmp[2])
     record = tmp[3]
-    dnf = bool(tmp[4])
+    dnf = tmp[4]
 
     record = Records(marathon=marathon, date=date, bibnum=bibnum, record=record, dnf=dnf)
     db.add(record)
@@ -50,7 +50,7 @@ def modify_record(db:Session, new_record):
         data = int(data)
         q.bib_num = data
     elif col == 'dnf':
-        data = bool(data)
+        data = data
         q.dnf = data
     elif col == 'marathon':
         q.marathon = data
