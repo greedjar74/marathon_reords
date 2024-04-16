@@ -13,8 +13,8 @@ def get_records(db:Session):
     return records
 
 # 기록은 db에 추가하는 함수
+# new_record 형태 : '대회명_일시_배번호_기록_완주여부'
 def update_record(db:Session, new_record):
-    new_record = str(new_record)
     tmp = new_record.split('_') # 각 객체를 분리한다.
 
     marathon = tmp[0] # 
@@ -27,6 +27,30 @@ def update_record(db:Session, new_record):
     db.add(record)
     db.commit()
 
+
 # db에 있는 데이터 수정
-def modify_record(db:Session, mew_record):
-    pass
+# new_record 형태 : 'id/col/변환값'
+def modify_record(db:Session, new_record):
+    tmp = new_record.split('/')
+    print(tmp)
+    id = tmp[0]
+    col = tmp[1]
+    data = tmp[2]
+
+    q = db.query(Records).get(id)
+
+    if col == 'date':
+        data = datetime.strptime(data, '%Y-%m-%d').date()
+        q.date = data
+    elif col == 'bib_num':
+        data = int(data)
+        q.bib_num = data
+    elif col == 'dnf':
+        data = bool(data)
+        q.dnf = data
+    elif col == 'marathon':
+        q.marathon = data
+    else :
+        q.record = data
+
+    db.commit()

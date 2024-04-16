@@ -27,7 +27,7 @@ def update_record(new_record, db: Session=Depends(get_db)): # schema를 통해 �
 
 # 기록 수정
 # id를 통해 특정 데이터를 가져오고 객체를 수정한다.
-# 입력 데이터 형태 : 'id값_col이름_변환값'
+# 입력 데이터 형태 : 'id/col/변환값'
 @router.post('/modify_record')
-def modify_record(modify_record, db: Session=Depends(get_db)):
-    crud.modify_record(db=db, modify_record=modify_record)
+def modify_record(new_record, db: Session=Depends(get_db)):
+    crud.modify_record(db=db, new_record=new_record)
