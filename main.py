@@ -17,4 +17,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# router파일을 사용
+# main에 작성할 수도 있지만 코드가 복잡해질 수 있기에 따로 구성하여 관리
 app.include_router(router.router)

@@ -12,6 +12,11 @@ def get_records(db:Session):
     records = db.query(Records).order_by(Records.id.desc()).all()
     return records
 
+# 특정 기록을 가져오는 함수
+def get_record_detail(db:Session, id):
+    record_detail = db.query(Records).get(id)
+    return record_detail
+
 # 기록은 db에 추가하는 함수
 # new_record 형태 : '대회명_일시_배번호_기록_완주여부'
 def update_record(db:Session, new_record):

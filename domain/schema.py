@@ -10,7 +10,7 @@ class record(BaseModel):
     id: int
     marathon: str
     date: str
-    bib_num: int
+    bibnum: int
     record: str
     dnf: bool
 
