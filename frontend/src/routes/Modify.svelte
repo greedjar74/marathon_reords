@@ -16,6 +16,9 @@
                 'data': data
             })
         })
+        id = ''
+        col = ''
+        data = '';
     }
 </script>
 

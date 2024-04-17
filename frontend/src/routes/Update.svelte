@@ -20,6 +20,11 @@
                 "dnf": dnf
             })
         })
+        marathon = ''
+        date = ''
+        bibnum = ''
+        record = ''
+        dnf = ''
     }
 
 </script>

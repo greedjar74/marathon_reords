@@ -44,7 +44,7 @@ def modify_record(db:Session, id, col, data):
 
 # db의 특정 row삭제
 def delete_record(db:Session, id):
-    id = int(id)
+    id = id
     q = db.query(Records).get(id)
     db.delete(q)
     db.commit()
