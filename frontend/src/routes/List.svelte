@@ -4,7 +4,7 @@
     let record_list = []
   
     function get_record_list() {
-      fetch("http://127.0.0.1:8000/records").then((response) => {
+      fetch("http://13.125.59.124:8000/records").then((response) => {
         response.json().then((json) => {
           record_list = json
         })

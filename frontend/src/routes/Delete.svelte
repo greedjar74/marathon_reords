@@ -3,7 +3,7 @@
 
     function delete_record(event){
         event.preventDefault()
-        fetch('http://127.0.0.1:8000/delete_record', {
+        fetch('http://13.125.59.124:8000/delete_record', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' // 요청 본문의 유형을 JSON으로 설정
