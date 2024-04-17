@@ -6,7 +6,7 @@
   import List from './routes/List.svelte';
   import Modify from './routes/Modify.svelte';
   import Delete from './routes/Delete.svelte';
-    import DeleteAll from './routes/Delete_All.svelte';
+  import DeleteAll from './routes/Delete_All.svelte';
 
   const routes = {
     '/': Home, // '/'과 '/records'가 맵핑

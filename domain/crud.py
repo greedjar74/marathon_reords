@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 # 모든 기록을 반환하는 함수 -> 첫 화면에서 사용됨
 def get_records(db:Session):
-    records = db.query(Records).order_by(Records.id.asc()).all() # asc(): 오름차순으로 불러오기, desc(): 내림차순으로 불러오기
+    records = db.query(Records).order_by(Records.id.desc()).all() # asc(): 오름차순으로 불러오기, desc(): 내림차순으로 불러오기
     return records
 
 # 특정 기록을 가져오는 함수
