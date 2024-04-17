@@ -4,7 +4,7 @@
     let record_detail = {}
 
     function get_record_detail() {
-        fetch(`http://13.125.59.124:8000/record_detail/${record_id}`).then((response) => {
+        fetch(`http://13.125.59.124:8000/record_detail/${record_id}`).then((response) => {// local 실행시 127.0.0.1으로 변환
             response.json().then((json) => {
                 record_detail = json
             })

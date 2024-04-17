@@ -4,7 +4,7 @@
     let record_list = []
   
     function get_record_list() {
-      fetch("http://13.125.59.124:8000/records").then((response) => {
+      fetch("http://13.125.59.124:8000/records").then((response) => { // local 실행시 127.0.0.1으로 변환
         response.json().then((json) => {
           record_list = json
         })
