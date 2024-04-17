@@ -45,7 +45,8 @@ def delete_record(id:dict, db: Session=Depends(get_db)):
 
 # 전체 데이터 삭제
 # 사용자로부터 특정 문장을 입력 받아야 삭제될 수 있게 한다.
-@router.post('/delete_all')
-def delete_all(delete_text, db:Session=Depends(get_db)):
-    if delete_text == 'delete all':    
-        crud.delete_all(db=db) 
+# 입력 데이터가 없으므로 get으로 처리
+@router.get('/delete_all')
+def delete_all(db:Session=Depends(get_db)):
+    # if delete_text == 'delete all': -> frontend에서 처리
+    crud.delete_all(db=db) 

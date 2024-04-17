@@ -8,5 +8,5 @@
     <button class="btn btn-primary"><a use:link href="/update_record">기록 등록</a></button><br>
     <button class="btn btn-primary"><a use:link href="/modify_record">기록 수정</a></button><br>
     <button class="btn btn-primary"><a use:link href="/delete_record">기록 삭제</a></button><br>
-    <button class="btn btn-primary"><a use:link href="/delete_all">기록 전체삭제</a></button>
+    <button class="btn btn-primary"><a use:link href="/delete_all">기록 전체 삭제</a></button>
 </h3>
