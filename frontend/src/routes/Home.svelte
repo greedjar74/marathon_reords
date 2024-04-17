@@ -3,7 +3,11 @@
     import { link } from 'svelte-spa-router';
 
     let endpoint = "records"; // Default endpoint
-    let content = '';
+    let marathon = '';
+    let date = '';
+    let bibnum = '';
+    let record = '';
+    let dnf = '';
 
     function get_record_list() {
         fetch("http://127.0.0.1:8000/records")
@@ -18,17 +22,30 @@
 
     function update_record(event) {
         event.preventDefault();
-
-        const dataToSend = JSON.stringify({ content }); // 데이터를 문자열로 직접 변환
-
+        console.log(marathon);
+        console.log(date);
+        console.log(bibnum);
+        console.log(record);
+        console.log(dnf);
+        
+        const int_bibnum = parseInt(bibnum)
+        console.log(typeof marathon);
+        console.log(typeof date);
+        console.log(typeof int_bibnum);
+        console.log(typeof record);
+        console.log(typeof dnf);
         fetch('http://127.0.0.1:8000/records/update_record', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: dataToSend, // 직접 문자열로 변환한 데이터를 body에 전달
+            marathon: marathon, // 직접 문자열로 변환한 데이터를 body에 전달
+            date: date,
+            bibnum: int_bibnum,
+            record: record,
+            dnf: dnf
         })
-        .then(response => response.json())
+        .then((response)=>{
+            console.log(response.ok);
+            return response.json();
+        })
         .then(jsonResponse => {
             console.log(jsonResponse);
             content = ''
@@ -68,7 +85,11 @@
 {:else}
     <!-- 기록 입력 창 -->
     <form on:submit|preventDefault="{update_record}">
-        <textarea rows="15" cols='100' bind:value={content}></textarea>
-        <input type="submit" value="기록등록">
+        <textarea rows="1" cols='15' bind:value={marathon}></textarea><br> <!-- 텍스트 입력 -->
+        <textarea rows="1" cols='15' bind:value={date}></textarea><br> <!-- 텍스트 입력 -->
+        <textarea rows="1" cols='15' bind:value={bibnum}></textarea><br> <!-- 텍스트 입력 -->
+        <textarea rows="1" cols='15' bind:value={record}></textarea><br> <!-- 텍스트 입력 -->
+        <textarea rows="1" cols='15' bind:value={dnf}></textarea><br> <!-- 텍스트 입력 -->
+        <input type="submit" value="기록등록" on:click="{update_record}"> <!-- 버튼 -->
     </form>
 {/if}

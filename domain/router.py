@@ -26,6 +26,7 @@ def get_record_detail(id, db: Session=Depends(get_db)):
 # 입력 데이터 형태 : '대회명, 일시, 배번호, 기록, dnf여부'
 @router.post('/update_record')
 def update_record(marathon, date, bibnum, record, dnf, db: Session=Depends(get_db)): # schema를 통해 미리 설정한 데이터 형태에 부합하는지 확인
+    print(marathon, date, bibnum, record, dnf)
     crud.update_record(db=db,marathon=marathon, date=date, bibnum=bibnum, record=record, dnf=dnf)
 
 # 기록 수정
