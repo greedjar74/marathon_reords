@@ -7,10 +7,10 @@ from sqlalchemy.orm import Session
 from database import get_db
 from domain import schema, crud
 
-router = APIRouter(prefix='/records')
+router = APIRouter(prefix='')
 
 # 메인 화면
-@router.get('', response_model=list[schema.record])
+@router.get('/records', response_model=list[schema.record])
 def records(db: Session=Depends(get_db)):
     _records = crud.get_records(db) # crud의 함수를 통해 기록 리스트를 가져온다.
     return _records
