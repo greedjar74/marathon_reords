@@ -18,7 +18,7 @@
         })
         id = ''
         col = ''
-        data = '';
+        data = ''
     }
 </script>
 

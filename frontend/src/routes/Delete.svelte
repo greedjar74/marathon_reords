@@ -1,5 +1,5 @@
 <script>
-    let record_id = '';
+    let id = '';
 
     function delete_record(event){
         event.preventDefault()
@@ -9,9 +9,10 @@
                 'Content-Type': 'application/json' // 요청 본문의 유형을 JSON으로 설정
             },
             body: JSON.stringify({
-                'record_id': record_id,
+                'id': id,
             })
         })
+        id = ''
     }
 </script>
 
@@ -20,7 +21,7 @@
     <form method="post" class='my-3'>
         <div class="mb-3">
             <label for="subject">기록 ID</label>
-            <input type="text" class="form-control" bind:value="{record_id}">
+            <input type="text" class="form-control" bind:value="{id}">
         </div><br>
 
         <button class="btn btn-primary" on:click="{delete_record}">삭제하기</button>

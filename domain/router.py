@@ -39,9 +39,9 @@ def modify_record(new_data:dict, db: Session=Depends(get_db)):
 # 특정 기록 삭제
 # id를 통해 특정 데이터를 지정하고 삭제한다.
 @router.post('/delete_record')
-def delete_record(record_id, db: Session=Depends(get_db)):
-    print(record_id)
-    crud.delete_record(db=db, id=record_id)
+def delete_record(id:dict, db: Session=Depends(get_db)):
+    print(id)
+    crud.delete_record(db=db, id=id)
 
 # 전체 데이터 삭제
 # 사용자로부터 특정 문장을 입력 받아야 삭제될 수 있게 한다.
