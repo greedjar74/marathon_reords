@@ -23,17 +23,18 @@ def get_record_detail(id, db: Session=Depends(get_db)):
 
 # 기록 입력
 # 유저에게 입력을 받는다. -> post사용
-# 입력 데이터 형태 : '대회명, 일시, 배번호, 기록, dnf여부'
+# 입력 데이터 형태 : dict형태로 데이터를 가져와서 각각의 데이터를 추출해서 사용해야된다. -> javascript의 특성
+# data는 입력값을 의미하고 dict형태이다. -> data = {'marathon':'~', 'date'='~', ... , dnf='~'}
 @router.post('/update_record')
-def update_record(data:dict, db: Session=Depends(get_db)): # schema를 통해 미리 설정한 데이터 형태에 부합하는지 확인
-    crud.update_record(db=db,marathon=data["marathon"], date=data["date"], bibnum=data["bibnum"], record=data["record"], dnf=data["dnf"])
+def update_record(new_record:dict, db: Session=Depends(get_db)): # schema를 통해 미리 설정한 데이터 형태에 부합하는지 확인
+    crud.update_record(db=db,marathon=new_record["marathon"], date=new_record["date"], bibnum=new_record["bibnum"], record=new_record["record"], dnf=new_record["dnf"])
 
 # 기록 수정
 # id를 통해 특정 데이터를 가져오고 객체를 수정한다.
-# 입력 데이터 형태 : 'id, col, 변환값'
+# 입력 데이터 형태 : dict형태로 데이터를 가져와서 각각의 데이터를 추출해서 사용해야된다. -> javascript의 특성
 @router.post('/modify_record')
-def modify_record(id, col, data, db: Session=Depends(get_db)):
-    crud.modify_record(db=db, id=id, col=col, data=data)
+def modify_record(new_data:dict, db: Session=Depends(get_db)):
+    crud.modify_record(db=db, id=new_data['id'], col=new_data['col'], data=new_data['data'])
 
 # 특정 기록 삭제
 # id를 통해 특정 데이터를 지정하고 삭제한다.
