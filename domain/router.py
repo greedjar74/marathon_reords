@@ -25,9 +25,8 @@ def get_record_detail(id, db: Session=Depends(get_db)):
 # 유저에게 입력을 받는다. -> post사용
 # 입력 데이터 형태 : '대회명, 일시, 배번호, 기록, dnf여부'
 @router.post('/update_record')
-def update_record(marathon, date, bibnum, record, dnf, db: Session=Depends(get_db)): # schema를 통해 미리 설정한 데이터 형태에 부합하는지 확인
-    print(marathon, date, bibnum, record, dnf)
-    crud.update_record(db=db,marathon=marathon, date=date, bibnum=bibnum, record=record, dnf=dnf)
+def update_record(data:dict, db: Session=Depends(get_db)): # schema를 통해 미리 설정한 데이터 형태에 부합하는지 확인
+    crud.update_record(db=db,marathon=data["marathon"], date=data["date"], bibnum=data["bibnum"], record=data["record"], dnf=data["dnf"])
 
 # 기록 수정
 # id를 통해 특정 데이터를 가져오고 객체를 수정한다.
