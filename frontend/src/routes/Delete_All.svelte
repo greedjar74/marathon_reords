@@ -4,7 +4,7 @@
     function delete_all(event){
         event.preventDefault()
         if(confirm === 'Delete All') {
-            fetch('http://13.125.59.124:8000/delete_all') // local 실행시 127.0.0.1으로 변환
+            fetch('http://127.0.0.1:8000/delete_all') // local 실행시 127.0.0.1으로 변환
             confirm = ''
         }
     }
